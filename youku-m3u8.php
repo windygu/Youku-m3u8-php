@@ -156,15 +156,15 @@ function charAt($str, $index = 0){
 }
 
 $vid = $_GET['vid'];
-if ($vid) {
+if (!empty($vid)) {
 	
 $link = 'http://v.youku.com/player/getPlaylist/VideoIDS/'.$vid.'/source/out/Pf/4/ctype/12/ev/1/Sc/2';
 $retval = _cget($link);
 
-if ($retval) {
+if (!empty($retval)) {
 	$rs = json_decode($retval, true);
 	$seed = $rs['data'][0]['seed'];
-	if ($seed) {
+	if (!empty($seed)) {
 	  $ip = $rs['data'][0]['ip'];
 	  $videoid = $rs['data'][0]['videoid'];
 	  list($sid, $token) = explode('_', yk_e('becaf9be', yk_na($rs['data'][0]['ep'])));
